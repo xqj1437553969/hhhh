@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>免费领卡</title>
+		<script src="static/js/resetRem.js"></script>
+		<link rel="stylesheet" type="text/css" href="static/css/weui.min.css">
+		<link rel="stylesheet" type="text/css" href="static/css/reset.css">
+	</head>
+	<body>
+		<div id="loadingToast" style="display: none;">
+	        <div class="weui-mask_transparent"></div>
+	        <div class="weui-toast">
+	            <i class="weui-loading weui-icon_toast"></i>
+	            <p class="weui-toast__content">数据加载中</p>
+	        </div>
+    	</div>
+        <div class="container" style="display: none;">
+        	<div class="changetype">请点击选择电话卡种类</div>
+        	<div id="card-img" class="apply">
+        		<div class="switch-area">
+					<div class="switch cf">
+						<div class="tab one transition left " data-type="3"></div>
+						<div class="tab two transition center checked " data-type="0"></div>
+						<div class="tab three transition right" data-type="4"></div>
+					</div>
+				</div>
+        	</div>
+        	<div id="free-get-card"><button id="btn-free">免费领卡</button></div>
+        	<div id="charge-detail">
+        		<div id="content">
+        			<div id="charge-title">Giffgaff卡资费详情</div>
+        			<div id="package-title"><p class="left">套餐名称</p><p class="right">套餐内容</p></div>
+        			<ul  id="list"></ul>
+        		</div>
+        	</div>
+        	<div class="js_dialog" id="iosDialog2" style="display: none;">
+		        <div class="weui-mask"></div>
+		        <div class="weui-dialog">
+		            <div class="weui-dialog__bd" id="tip-info">弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内</div>
+		            <div class="weui-dialog__ft">
+		                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary" id="know">知道了</a>
+		            </div>
+		        </div>
+    		</div>
+        </div>
+        <script src="static/js/weui.min.js"></script>
+	    <script src="static/js/zpeto.js"></script>
+	</body>
+</html>

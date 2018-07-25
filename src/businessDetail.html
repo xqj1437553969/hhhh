@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>开通记录</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="static/js/resetRem.js"></script>
+		<link rel="stylesheet" type="text/css" href="static/css/weui.min.css">
+		<link rel="stylesheet" type="text/css" href="static/css/reset.css"/>
+	</head>
+	<body>
+		<div id="loadingToast" style="display: none;">
+		        <div class="weui-mask_transparent"></div>
+		        <div class="weui-toast">
+		            <i class="weui-loading weui-icon_toast"></i>
+		            <p class="weui-toast__content">数据加载中</p>
+		        </div>
+    	</div>
+	    <div class="wrapper-buy-detail">
+	    	<div class="buy-detail">
+					<ul class="buy-info">
+
+					</ul>
+			</div>
+			<button class="modification-btn" style="display:none;">修改激活日期</button>
+			<!--修改激活日期弹出层-->
+			<div class="js_dialog" id="change-date" style="display: none;">
+	            <div class="weui-mask"></div>
+	            <div class="weui-dialog" id="reset-weui-diglog">
+	                <div class="reset-weui-dialog__hd">修改激活日期<i class="x-btn"><img src="images/x_03.png"/></i></div>
+	                <div class="add-weui-dialog__hd">激活日期</div>
+	                <div class="reset-weui-dialog__bd" id="date">请选择激活日期（英国日期）</div>
+	                <div class="reset-weui-dialog__ft">
+	                   <!-- <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default">辅助操作</a>-->
+	                    <a href="javascript:;" class="reset-weui-dialog__btn" id="sub">提交</a>
+	                </div>
+	            </div>
+	        </div>
+	        <!--修改激活日期弹出层-->
+	    	<button class="btn-continue-pay" style="display:none;">继续支付</button>
+	    	<button class="btn-cancel-pay"  id="showIOSDialog1" style="display:none;">取消订单</button>
+	    	<!--继续支付取消订单弹出层-->
+	        <div class="js_dialog" id="iosDialog1" style="display: none;">
+	            <div class="weui-mask"></div>
+	            <div class="weui-dialog" id="reset-weui-diglog">
+	                <div class="reset-weui-dialog__hd">确定取消订单吗？</div>
+	                <div class="weui-dialog__ft" id="reset-weui-dialog__ft">
+	                    <a href="javascript:;" class="weui-dialog__btn" id="cancel">取消</a>
+	                    <a href="javascript:;" class="weui-dialog__btn" id="continue">确定</a>
+	                </div>
+	            </div>
+	        </div>
+	        <!--继续支付取消订单弹出层-->
+	        <!--通知消息弹出层-->
+	        <div class="js_dialog" id="massage-tell" style="display: none;">
+		        <div class="weui-mask"></div>
+		        <div class="weui-dialog">
+		            <div class="weui-dialog__bd" id="tip-info">弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内</div>
+		            <div class="weui-dialog__ft">
+		                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary" id="know">知道了</a>
+		            </div>
+		        </div>
+    		</div>
+    		<!--通知消息弹出层-->
+	    </div>
+	    <!--<script src="js/lib/resetRem.js"></script>-->
+	    <script src="static/js/zpeto.js"></script>
+	    <script src="static/js/fastclick.js"></script>
+	    <script src="static/js/jweixin-1.1.0.js"></script>
+	    <script src="static/js/weui.min.js"></script>
+	    <script src="static/js/date.js"></script>
+	</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>我的推荐</title>
+		<script src="static/js/resetRem.js"></script>
+		<link rel="stylesheet" type="text/css" href="static/css/weui.min.css">
+		<link rel="stylesheet" type="text/css" href="static/css/reset.css"/>
+	</head>
+	<body>
+		<div class="container">
+			<p class="title">分享二维码，推荐好友，免费领卡</p>
+			<div class="btn-wrapper">				
+				<button id="btn">生成专属二维码</button>
+			</div>
+			<div class="qrcode-wrapper">				
+			</div>
+			<div class="recommend-wrapper">
+				<p class="record-title">我的推荐记录</p>
+				<div class="count-wrapper">
+					<span>总推荐卡数</span><span id="count">3</span>
+				</div>
+				<div class="records">
+					<ul>
+					</ul>
+				</div>
+			</div>
+			<div class="weui-gallery">
+		        <span class="weui-gallery__img"></span>
+		        <div class="weui-gallery__opr">
+		            <a href="javascript:" class="weui-gallery__del">
+		                            扫一扫上面的二维码图案，免费领卡
+		            </a>
+		        </div>
+   			</div>
+   			<div id="loadingToast" style="display: none;">
+		        <div class="weui-mask_transparent"></div>
+		        <div class="weui-toast">
+		            <i class="weui-loading weui-icon_toast"></i>
+		            <p class="weui-toast__content">数据加载中</p>
+		        </div>
+    	    </div>
+   			 <script src="static/js/zpeto.js"></script>
+             <script src="static/js/weui.min.js"></script>
+		</div>
+	</body>
+</html>

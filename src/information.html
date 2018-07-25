@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>个人中心</title>
+		<script src="static/js/resetRem.js"></script>
+		<link rel="stylesheet" type="text/css" href="static/css/weui.min.css">
+		<link rel="stylesheet" type="text/css" href="static/css/reset.css"/>
+	</head>
+	<body>
+		<div id="loadingToast" style="display: none;">
+		        <div class="weui-mask_transparent"></div>
+		        <div class="weui-toast">
+		            <i class="weui-loading weui-icon_toast"></i>
+		            <p class="weui-toast__content">数据加载中</p>
+		        </div>
+    	</div>
+		<div class="container">
+			<ul>
+				<li id="improve-info"><span class="left">个人信息</span><img class="right" src="images/icon_03.png" alt="" /></li>
+				<li id="card-record" class="record"><span class="left ">领卡记录</span><img class="right" src="images/icon_03.png" alt="" /></li>
+				<li id="business-record" class="record"><span class="left ">开通记录</span><img class="right" src="images/icon_03.png" alt="" /></li>
+				<li id="prepaid-record" class="record"><span class="left ">充值记录</span><img class="right" src="images/icon_03.png" alt="" /></li>
+				<li id="recommend" class="record"><span class="left ">我的推荐</span><img class="right" src="images/icon_03.png" alt="" /></li>
+			</ul>
+			<button id="btn-logout">退出登录</button>
+		</div>
+        <script src="static/js/jquery-2.1.1.min.js"></script>
+        <script src="static/layer/layer.js"></script>
+	</body>
+</html>

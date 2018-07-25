@@ -1,0 +1,160 @@
+.wrapper-buy-detail{
+	width:100%;
+	height:100%;
+	background:url(../images/back.jpg) no-repeat 0 0;
+    background-size:100% 100%;
+    font-size:.16rem; 
+}
+.buy-detail{
+	width:3.3rem;
+	padding-left:.225rem;
+	padding-right:.225rem;
+	background-color:#e2e2e5;
+	font-size:.16rem;
+}
+.buy-info>li{
+	height:.49rem;
+}
+.info-left{
+	float:left;
+}
+.info-right{
+	float:right;
+}
+.info-left,.info-right{
+	display:inline-block;
+	line-height:.49rem;
+}
+.contact{
+    margin-top:.12rem;
+    color:#fff;
+    font-size:.16rem;
+    padding-left:.225rem;
+    display:none;
+}
+button{
+	display:block;
+	width:3.24rem;
+	height:.45rem;
+	background-color:rgb(202,29,123);
+	border:none;
+	outline:none;
+	margin-left:.24rem;
+	border-radius:.07rem;
+	font-size:.16rem;
+	color:#fff;
+}
+/*button.modification-btn{
+	margin-top:.49rem;
+}*/
+button.btn-continue-pay{
+	margin-top:0.22rem;
+}
+button.btn-cancel-pay{
+	margin-top:0.1rem;
+}
+/*修改激活日期弹出层*/
+/*#change-date #reset-weui-diglog{
+	font-size:0.14rem;
+}
+#change-date .reset-weui-dialog__hd{
+	line-height:0.52rem;
+	position:relative;
+}
+#change-date .reset-weui-dialog__hd i{
+	line-height:0;
+	position:absolute;
+	top:28%;
+	right:5%;
+}
+#change-date .reset-weui-dialog__hd i>img{
+	width:0.125rem;
+	height:0.125rem;
+}
+#change-date .add-weui-dialog__hd{
+    line-height:0.14rem;
+	padding-left:0.24rem;
+	text-align:left;
+}
+#change-date .reset-weui-dialog__bd{
+	position:relative;
+	margin-top:0.16rem;
+	line-height:0.46rem;
+	padding-left:0.24rem;
+    text-align:left;
+    color:#a3a3a3;
+}
+#change-date .reset-weui-dialog__bd:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1px solid #000;
+    color: #000;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);
+}
+#change-date .reset-weui-dialog__bd:after{
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0.46rem;
+    right: 0;
+    height: 1px;
+    border-top: 1px solid #000;
+    color: #000;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);
+}
+#change-date .reset-weui-dialog__ft{
+	line-height:0.56rem;
+}
+#change-date .reset-weui-dialog__btn{
+	display:inline-block;
+	width:60%;
+	line-height:0.39rem;
+	background:#ca1d7b;
+	color:#fff;
+	border-radius:0.05rem;
+}
+#change-date .weui-picker__item{
+	padding: 0;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    color: #000000;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}*/
+/*取消订单继续支付*/
+#iosDialog1 #reset-weui-diglog{
+    font-size:0.14rem;
+}
+#iosDialog1 .reset-weui-dialog__hd{
+    line-height:0.94rem;
+}
+#iosDialog1 #reset-weui-dialog__ft{
+    line-height:0.47rem;	
+}
+#iosDialog1 .weui-dialog__ft:after{
+   	border-color:#000;
+}
+#iosDialog1 #cancel,#continue{
+    font-size:0.14rem;
+    color:#000;
+}
+#iosDialog1 .weui-dialog__btn:after{
+    border-color:#000;
+}
+/*消息通知层*/
+#know{
+   color:#353535;
+   font-size:0.15rem;
+}

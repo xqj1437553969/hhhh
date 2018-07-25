@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="static/js/resetRem.js"></script>
+		<link rel="stylesheet" type="text/css" href="static/css/weui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="static/css/reset.css"/>
+		<title>话费充值</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="card-img"><img src="images/recharge.jpg" alt="" /></div>
+			<div class="write-tip">请填写国外号码</div>
+			<div class="form">
+				<div class="cell"><label class="label" id="lable"><span>英国（+44）</span><i id="xia"></i></label></div>
+	            <div class="cell-input">
+	                 <input type="text" id="phone" placeholder="请输入手机号码">
+	            </div>
+		    </div>
+		    <div class="recharge-wrapper">
+		    	<div class="change-wrapper">
+		    		<span>当前套餐</span><span id="package-name">￡10 基础套餐</span>
+		        </div>
+		        <div class="package-wrapper">		        	
+		        	<div class="package-detail-title">套餐详情</div>
+		        	<div class="package-detail">UK流量6GB，UK通话无限，UK短信无限</div>
+		            <div class="select-month-title">请选择订购月数</div>
+		    		<div class="select-month">
+						<select id="order-month">
+                             <option value="1">1个月</option>
+                             <option value="2">2个月</option>
+                             <option value="3">3个月</option>
+	                    </select>
+					</div>
+					<div class="buy-info" style="margin-top:.2rem;">
+						<p class="buy-total">总计：$40.0*3 = $147.0</p>
+						<p class="buy-rmb">$147.0=1029.0CNY</p>
+						<p class="buy-rate">汇率按照：$1.0=7.00CNY</p>
+					</div>
+		        </div>
+		    </div>
+			<button id="btn-pay">立即充值</button>
+			<div class="empty-box">Copyright © 2017-2018 fuwii.com<a id="prepaidRecord" href="prepaidRecord.html?prepaidType=1">充值记录</a></div>
+		</div>
+		<div id="loadingToast" style="display: none;">
+	        <div class="weui-mask_transparent"></div>
+	        <div class="weui-toast">
+	            <i class="weui-loading weui-icon_toast"></i>
+	            <p class="weui-toast__content">数据加载中</p>
+	        </div>
+    	</div>
+		<script src="static/js/zpeto.js" type="text/javascript" charset="utf-8"></script>
+		<script src="static/js/fastclick.js" type="text/javascript" charset="utf-8"></script>
+		<script src="static/js/weui.min.js"></script>
+	</body>
+</html>

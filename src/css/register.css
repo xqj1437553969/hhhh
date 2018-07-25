@@ -1,0 +1,93 @@
+.container{
+	height:100%;
+	background:url(../images/login_back.jpg) no-repeat 0 0;
+	background-size:100% 100%;
+	font-size:.16rem;
+}
+.form-wrapper{
+	padding-top:3rem;
+}
+.form{
+	box-sizing:border-box;
+	padding:.1rem .28rem;
+	padding-right:.15rem;
+	margin:0 atuo;
+	margin-top:.05rem;
+	line-height:.25rem;
+	background:#fff;
+	font-size:.15rem;
+	display:flex;
+    display:-webkit-flex;
+	flex-direction: row;
+	-webkit-flex-direction:row;
+	opacity:0.9;
+}
+
+.label{
+	display:block;
+    width:1.05rem;
+}
+.cell-input{
+	flex:1;
+	-webkit-flex:1;
+}
+.cell-input>input{
+	width:100%;
+	line-height:.27rem;
+	font-size:.15rem;
+}
+.phone-form{
+	width:90%;
+	margin-left:5%;
+}
+.code-form{
+	width:90%;
+	margin-left:5%;
+	display:flex;
+	display:-webkit-flex;
+}
+#lable{
+	position:relative;
+}
+#xia{
+	display:block;
+	width:.09rem;
+	height:.07rem;
+	position:absolute;
+	top:41%;
+	right:15%;
+	background:url(../images/xia_03.png) no-repeat 0 0;
+	background-size:100%;
+}
+#get-code{
+	display:block;
+	width:1.2rem;
+	margin-top:.05rem;
+	opacity:0.9;
+	border:none;
+	border-left:1px solid #333;
+	background-color:#fff;
+    text-align:center;
+    font-size:.14rem;
+    font-family:"微软雅黑";
+}
+#btn-login{
+	display:block;
+	width:3.25rem;
+	height:.45rem;
+	border:none;
+	outline:none;
+	border-radius:.07rem;
+	background:#ca1d7b;
+	margin-top:.6rem;
+	margin-left:.25rem;
+	text-align:center;
+	line-height:.45rem;
+	font-size:.16rem;
+	color:#fff;
+	font-family:"微软雅黑";
+}
+#know{
+   color:#353535;
+   font-size:0.15rem;
+}

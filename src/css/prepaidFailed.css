@@ -1,0 +1,45 @@
+.container{
+	height:100%;
+	background: url(../images/back.jpg) no-repeat 0 0;
+	background-size:100% 100%;
+	font-size:.16rem;
+}
+.prepaid-failed{
+	text-align:center;
+	padding-top:1.3rem;
+}
+.prepaid-failed img{
+	width:1.11rem;
+	height:1.16rem;
+}
+.prepaid-info{
+	height:1.17rem;
+	padding-top:.16rem;
+	text-align:center;
+}
+.prepaid-info-title{
+	font-size:.16rem;
+	color:#fff;
+}
+.prepaid-info>p.sub-tip{
+	margin-top:.15rem;
+	line-height:.26rem;
+	color:#eee;
+	font-size:.16rem;
+}
+#btn-sub{
+	display:block;
+	width:3.24rem;
+	height:.45rem;
+	text-align:center;
+    line-height:.45rem;
+	background:rgb(202,29,123);
+	border:none;
+	border-radius:.07rem;
+	margin:0 auto;
+	margin-top:1.27rem;
+	font-size:.16rem;
+	color:#fff;
+	outline:none;
+	
+}
