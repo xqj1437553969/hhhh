@@ -44,12 +44,23 @@ function putData(items){
 	var countryName = item.countryName;
 	var phoneNo = item.phoneNo;
 	var productName = item.productName;
+	var monthNo = item.monthNo;
 	var packageName = item.packageName;
 	var orderPirce = item.orderPirce;
 	var orderStatus = item.orderStatus;
 	var operatorName = item.operatorName;
 	var rechargeType = item.rechargeType;
 	var changeStatus = item.changeStatus;
+	if(productName){
+		var productStr = `<li><span class="info-left">充值金额</span><span class="info-right">${productName}</span></li>`
+    }else{
+    	var productStr = '';
+	}
+    if(monthNo){
+		var monthStr = `<li><span class="info-left">订购月数</span><span class="info-right">${monthNo}</span></li>`
+	}else{
+		var monthStr = '';
+	}
 	if(orderStatus=="充值失败"){
 		$(".contact-refund").show();
 	}else{
@@ -71,7 +82,8 @@ function putData(items){
 			   <li><span class="info-left">运营商</span><span class="info-right">${operatorName}</span></li>
 			   <li><span class="info-left">充值号码</span><span class="info-right">${phoneNo}</span></li>
 			   <li><span class="info-left">充值类型</span><span class="info-right">${rechargeType}</span></li>
-			   <li><span class="info-left">充值金额</span><span class="info-right">${productName}</span></li>
+			   ${productStr}
+			   ${monthStr}
 			   <li><span class="info-left">套餐名称</span><span class="info-right">${packageName}</span></li>
 			   ${strChangeStatus}
 			   <li><span class="info-left">订单价格</span><span class="info-right">${orderPirce}CNY</span></li>

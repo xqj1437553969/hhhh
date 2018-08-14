@@ -1,4 +1,5 @@
 .wrapper-buy-detail{
+	box-sizing: border-box;
 	width:100%;
 	min-height:100%;
 	background:url(../images/back.jpg);
@@ -6,6 +7,7 @@
     background-size:100% 100%; 
     background-attachment: fixed;
     font-size:.16rem;
+    padding-bottom:.22rem;
 }
 .buy-detail{
 	width:3.3rem;
@@ -39,13 +41,13 @@ button{
 	color:#fff;
 }
 button.modification-btn{
-	margin-top:.49rem;
+	margin-top:.3rem;
 }
 button.btn-continue-pay{
-	margin-top:0.22rem;
+	margin-top:.22rem;
 }
 button.btn-cancel-pay{
-	margin-top:0.1rem;
+	margin-top:.1rem;
 }
 /*修改激活日期弹出层*/
 #change-date #reset-weui-diglog{

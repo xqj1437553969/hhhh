@@ -62,12 +62,24 @@ function putData(r){
 			var recordItem = recordList[i];
 			var phoneNo = recordItem.phoneNo;
 			var productName = recordItem.productName;
+			var monthNo = recordItem.monthNo;
 			var orderPirce = recordItem.orderPirce;
 			var orderStatus = recordItem.orderStatus;
 			var createTime = formatToTime(recordItem.createTime);
+			if(productName){
+		    	var productStr = `<div><span class="info-left">充值金额</span><span class="info-right">${productName}</span></div>`
+		    }else{
+		    	var productStr = '';
+   			}
+		    if(monthNo){
+    			var monthStr = `<div><span class="info-left">订购月数</span><span class="info-right">${monthNo}</span></div>`
+   			}else{
+    			var monthStr = '';
+   			}
 			str+=`<li class="prepaid-info">
 					<div><span class="info-left">充值号码</span><span class="info-right">${phoneNo}</span></div>
-					<div><span class="info-left">充值金额</span><span class="info-right">${productName}</span></div>
+					${productStr}
+			   		${monthStr}
 					<div><span class="info-left">订单价格</span><span class="info-right">${orderPirce}CNY</span></div>
 					<div><span class="info-left">订单状态</span><span class="info-right">${orderStatus}</span></div>
 					<div><span class="info-left">提交时间（北京时间）</span><span class="info-right">${createTime}</span></div>

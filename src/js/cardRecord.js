@@ -16,23 +16,22 @@ $.ajax({
 	}
 });
 function putRecord(res){
-	var cardRecordList = res.record;
+	var cardRecordList = res.record.reverse();
     var length = cardRecordList.length;
     if(length==0){
 		$(".container").append("<div class='tip'>您的领卡记录是空的！</div>");
 	}else{
 		$(".tip").remove();
 		var str = "";
-	    for(var i=length-1;i>=0;i--){
+	    for(var i=0;i<length;i++){
 	    	var cardRecord = cardRecordList[i];//订单列表
+	    	var operatorName = cardRecord.operatorName;//运营商名称
 	    	var createTime = formatToTime(cardRecord.createTime);//订单提交时间
 	    	var orderAddress = cardRecord.orderAddress;//收货地址
 	    	var orderId = cardRecord.orderId;//订单id
 	    	var orderStatus = cardRecord.orderStatus;//订单状态
 	    	var courierCompany = cardRecord.courierCompany;//快递公司
 	    	var courierNo = cardRecord.courierNo;//快递单号
-//	    	console.log(orderId)
-//	    	console.log(courierCompany);
 	    	if(courierCompany==undefined){
 	    		courierCompany = "暂未填写";
 	    		courierNo = "暂未填写"
@@ -51,6 +50,7 @@ function putRecord(res){
 	    	str+=`<li>
 					<p id="send-address">配送地址</p>
 					<p class="margin">${orderAddress}</p>
+				    <p class="margin"><span class="left">卡类型</span><span class="right">${operatorName}</span></p>
 					${courier}
 					<p class="margin"><span class="left">提交时间</span><span class="right">${createTime}</span></p>
 					${cancel}

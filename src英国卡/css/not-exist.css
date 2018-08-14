@@ -1,0 +1,11 @@
+.container{
+	height:100%;
+	background:url(../images/back.jpg) no-repeat 0 0;
+	background-size:100% 100%;
+	font-size:.17rem;
+}
+#not-exist{
+	padding-top:40vh;
+    text-align: center;
+    color:#fff;
+}

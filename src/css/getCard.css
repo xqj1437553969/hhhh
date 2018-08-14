@@ -1,3 +1,6 @@
+.area_btn{
+	color:#ca1d7b;
+}
 .container{
 	min-height:100%;
 	background: url(../images/back.jpg) no-repeat 0 0;
@@ -39,6 +42,7 @@
 	width:100%;
 	line-height:.27rem;
 	font-size:.15rem;
+	background: transparent;
 }
 .code-form{
 	display:flex;

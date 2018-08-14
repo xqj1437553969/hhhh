@@ -38,25 +38,14 @@ function getDetail(){
 	});
 }
 function putDetail(info){
-//	console.log(info);
-	var phoneStr = "";
+	console.log(info);
 	var phoneNo = info.phoneNo;
-	if(phoneNo){
-	   phoneStr = `<li><span class="info-left">国外号码</span><span class="info-right">${phoneNo}</span></li>`;
-	}
-	var usernameStr = "";
 	var username = info.username;
-	if(username){
-	   usernameStr = `<li><span class="info-left">Giffgaff帐号</span><span class="info-right">${username}</span></li>`;
-	}
-	var pswordStr = "";
 	var psword = info.password;
-	if(psword){
-	   pswordStr = `<li><span class="info-left">Giffgaff密码</span><span class="info-right">${psword}</span></li>`;
-	}
 	var cardNo =info.cardNo;//卡号
     var packageName = info.packageName.replace(" ","");//套餐名称
-    var productname = info.productname;//充值金额
+    var productname = info.productname;//英国充值金额
+    var monthNo = info.monthNo;//美国订购月数
     var price = info.orderPirce;//订单价格
     var orderSource = info.orderSource;//支付方式
     var orderStatus = info.orderStatus;//订单状态
@@ -66,10 +55,41 @@ function putDetail(info){
     var datePromptStr = "";
     var operatorName = info.operatorName;
     var countryName  = info.countryName;
-    if(activateDatePrompt){
-    	datePromptStr = `<li><span class="info-left">激活日期（${activateDatePrompt}）</span><span class="info-right">${activateDate}</span></li>`
+    //号码存在则显示
+    if(phoneNo){
+	   var phoneStr = `<li><span class="info-left">国外号码</span><span class="info-right">${phoneNo}</span></li>`;
+	}else{
+	   var phoneStr = '';
+	}
+	//用户名存在则显示
+	if(username){
+	   var usernameStr = `<li><span class="info-left">Giffgaff帐号</span><span class="info-right">${username}</span></li>`;
+	}else{
+	   var usernameStr = '';
+	}
+	//密码存在则显示
+	if(psword){
+	   var pswordStr = `<li><span class="info-left">Giffgaff密码</span><span class="info-right">${psword}</span></li>`;
+	}else{
+	   var pswordStr = '';
+	}
+	//充值金额存在则显示
+    if(productname){
+    	var productStr = `<li><span class="info-left">充值金额</span><span class="info-right">${productname}</span></li>`
     }else{
-    	datePromptStr = `<li><span class="info-left">激活日期</span><span class="info-right">${activateDate}</span></li>`
+    	var productStr = '';
+    }
+    //订购月数存在则显示
+    if(monthNo){
+    	var monthStr = `<li><span class="info-left">订购月数</span><span class="info-right">${monthNo}</span></li>`
+    }else{
+    	var monthStr = '';
+    }
+    //激活日期国家存在则显示，不存在则只显示激活日期
+    if(activateDatePrompt){
+    	var datePromptStr = `<li><span class="info-left">激活日期（${activateDatePrompt}）</span><span class="info-right">${activateDate}</span></li>`
+    }else{
+    	var datePromptStr = `<li><span class="info-left">激活日期</span><span class="info-right">${activateDate}</span></li>`
     }
     if(!limitUpdateDate){    	
     	activateDateEarliest = info.activateDateEarliest;
@@ -85,10 +105,12 @@ function putDetail(info){
                <li><span class="info-left">国家</span><span class="info-right">${countryName}</span></li>
 			   <li><span class="info-left">运营商</span><span class="info-right">${operatorName}</span></li>
 			   <li><span class="info-left">套餐名称</span><span class="info-right">${packageName}</span></li>
-			   <li><span class="info-left">充值金额</span><span class="info-right">${productname}</span></li>
+			   ${productStr}
+			   ${monthStr}
 			   <li><span class="info-left">订单价格</span><span class="info-right">${price}CNY</span></li>
 			   <li><span class="info-left">订单来源</span><span class="info-right">${orderSource}</span></li>
 			   <li><span class="info-left">订单状态</span><span class="info-right">${orderStatus}</span></li>
+			   ${datePromptStr}
 			   <li><span class="info-left">提交时间（北京时间）</span><span class="info-right">${createTime}</span></li>`
     $(".buy-info").html(str);
 }

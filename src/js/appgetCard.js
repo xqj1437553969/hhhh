@@ -1,5 +1,11 @@
 import '../css/appgetCard.css';
 $('body').height($('body')[0].clientHeight);//弹出键盘错位问题
+var cardtype = sessionStorage.getItem("cardtype");
+if(cardtype==="Giffgaff"){
+	$("#title").text('已选择"Giffgaff卡"');
+}else if(cardtype==="T-mobile"){
+	$("#title").text('已选择"T-mobile卡"');
+}
 var timer = null;
 var count = 60;
 $("#get-code").click(function(){//验证码请求
@@ -21,16 +27,16 @@ $("#get-code").click(function(){//验证码请求
     	success:function(r){
     		if(r.success){
     			timer = setInterval(function(){
-				$(that).html("已发送<span>"+count+"s</span>");
-				if(count==0){
-				   $(that).removeAttr("disabled"); 
-				   clearInterval(timer);
-				   count = 60;
-				   $(that).html("请重新获取")
-				   return;
-				}
-				$(that).attr("disabled", "true"); 
-				count--
+	    			$(that).attr("disabled", "true"); 
+					count--;
+					if(count==0){
+					   $(that).removeAttr("disabled"); 
+					   clearInterval(timer);
+					   count = 60;
+					   $(that).html("请重新获取")
+					   return;
+					}
+					$(that).html("已发送<span>"+count+"s</span>");
 				},1000)
     		}else{
     			$("#tip-info").html(r.desc);
@@ -51,7 +57,7 @@ function selectArea(){//地区选择
 		'type' : 1, //数据源类型
 		'data' : LAreaData//数据源
      });
-	 area1.value = [1,13,1];//控制初始位置，注意：该方法并不会影响到input的value
+	 area1.value = [0,0,0];//控制初始位置，注意：该方法并不会影响到input的value
 }
 selectArea();
 
@@ -68,7 +74,7 @@ function btnSub(){
 	if(typeInfo){		
 	   typeInfo = Number(typeInfo);
 	}
-	console.log(typeInfo||null);//获取type字段
+//	console.log(typeInfo||null);
 	var username = $("#username").val();
 	var phoneNum = $("#phone").val();
 	var code = Number($("#code").val());

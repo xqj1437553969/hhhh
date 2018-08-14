@@ -117,15 +117,15 @@
 .buy-info{
 	text-align:right;
 }
-.buy-total{
-	padding-right:.15rem;
+/*.buy-total{
+	padding-right:0rem;
 }
 .buy-rmb{
-	padding-right:.47rem;
+	padding-right:0rem;
 }
 .buy-rate{
-	padding-right: .04rem;
-}
+	padding-right:0rem;
+}*/
 #btn-pay{
 	display:block;
 	width:3.26rem;
@@ -185,7 +185,7 @@ strong{
 	background-color:transparent;;
 	position:relative;
 	z-index:1;
-	text-indent:38%;         
+	text-indent:30%;         
 }
 .select-month:before{
 	content:"";

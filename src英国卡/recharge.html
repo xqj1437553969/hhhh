@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="static/js/resetRem.js"></script>
+		<link rel="stylesheet" type="text/css" href="static/css/weui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="static/css/reset.css"/>
+		<title>话费充值</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="card-img"><img src="images/recharge.jpg" alt="" /></div>
+			<div class="write-tip">请填写国外号码</div>
+			<div class="form">
+				<div class="cell"><label class="label" id="lable">英国（+44）</label></div>
+	            <div class="cell-input">
+	                 <input type="text" id="phone" placeholder="请输入手机号码">
+	            </div>
+		    </div>
+		    <div class="recharge-wrapper">
+		    </div>
+			<button id="btn-pay">立即充值</button>
+			<div class="empty-box">Copyright © 2017-2018 fuwii.com<a id="prepaidRecord" href="prepaidRecord.html?prepaidType=1">充值记录</a></div>
+		</div>
+		<div id="loadingToast" style="display: none;">
+	        <div class="weui-mask_transparent"></div>
+	        <div class="weui-toast">
+	            <i class="weui-loading weui-icon_toast"></i>
+	            <p class="weui-toast__content">数据加载中</p>
+	        </div>
+    	</div>
+		<script src="static/js/zpeto.js" type="text/javascript" charset="utf-8"></script>
+		<script src="static/js/fastclick.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

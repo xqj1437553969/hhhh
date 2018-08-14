@@ -50,9 +50,15 @@ $.ajax({
 			openId = r.data.openId;
 			nickname = r.data.nickname;
 			headurl = r.data.headurl;
+			phone = r.data.phone;
 			sessionStorage.setItem("openId",openId);
 			sessionStorage.setItem("nickname",nickname);
 			sessionStorage.setItem("headurl",headurl);
+			if(phone){
+			   sessionStorage.setItem("loginPhone",phone);
+			}else{
+			   sessionStorage.removeItem("loginPhone");
+			}
 			sendCount(openId);
 			putCountry(r,0);
 			$(".container").show();
@@ -77,7 +83,6 @@ function sendCount(openId){
 	});
 }
 function putCountry(r,datatype){
-	phone = r.data.phone;
 	var operatorList = r.data.operatorList;
 	for(var i=0;i<operatorList.length;i++){
     	if(operatorList[i].countryName=="英国"&&operatorList[i].operatorName.indexOf("gaff")!=-1){

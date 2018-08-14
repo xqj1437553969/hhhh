@@ -1,0 +1,49 @@
+blockquote,body,button,dd,div,dl,dt,form,h1,h2,h3,h4,h5,h6,input,legend,li,ol,p,td,textarea,th,ul {
+    margin:0;
+    padding:0;
+    -webkit-tap-highlight-color:rgba(0,0,0,0)
+}
+body{
+    font-family: "Adobe 黑体 Std";
+}
+
+.bottom-btn {
+    display: flex;
+    display: -webkit-flex; /* Safari */
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 20rem;
+    width: 80%;
+    height: 2.5rem;
+    background-color: #ca1d7b;
+    text-align: center;
+    border-radius: 10px;
+}
+.bottom-btn a{
+    display: inline-block;
+    vertical-align: middle;
+    color: #fff;
+}
+.logo-img{
+    width: 5rem;
+    margin: 1rem 0 0 1rem;
+}
+.c-input {
+    width: 100%;
+    display: block;
+    height:2.5rem;
+    background-color: #e4e2e5;
+    color: #000000;
+}
+.c-label {
+    float: left;
+    padding-left: 1rem;
+}
+
+.c-div-input {
+    float: left;
+}
+.c-div-input input{
+    border: none;
+}

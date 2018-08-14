@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>个人信息</title>
+		<script src="static/js/rem.js"></script>
+		<link rel="stylesheet" href="static/layui/css/layui.css">
+		<link rel="stylesheet" href="static/css/global.css">
+</head>
+<body>
+	<div class="container">
+		<div class="head">
+			<form class="layui-form" action="../center/updateInformation">
+				<p>请输入身份证号</p>
+				<input class="layui-input c-input" type="text" name="idCardNo">
+				<p>请上传身份证正面图片</p>
+				<div class="layui-clear">
+					<div class="upload-left">
+						<img id="test1" src="images/upload-icon.jpg">
+					</div>
+					<div class="upload-right">
+						<img class="layui-upload-img" id="demo1">
+					</div>
+					<p id="demoText"></p>
+				</div>
+				<input type="hidden" name="idCardPic" value="">
+				<p>国外就读学校名称</p>
+				<input class="layui-input c-input" type="text" name="university">
+				<div class="bottom-btn">
+					<a lay-filter="userinfo-form" lay-submit id="getcard-href">提交信息</a>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script src="static/layui/layui.js"></script>
+</body>
+</html>

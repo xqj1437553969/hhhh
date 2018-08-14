@@ -1,0 +1,42 @@
+.container{
+	height:100%;
+	background: url(../images/back.jpg) no-repeat 0 0;
+	background-size:100% 100%;
+	display:none;
+	font-size:.16rem;
+}
+ul{width:100%;}
+li{ 
+	width:100%;
+	padding-left:.27rem;
+	padding-right:.39rem;
+	height:.48rem;
+	line-height:.48rem;
+	background:#dddcde;
+	box-sizing:border-box;
+}
+li.record{margin-top:.06rem;}
+li>.left{
+	float:left;
+}
+li>.right{
+	width:.13rem;
+	height:.48rem;
+	float:right;
+}
+#btn-logout{
+	display:block;
+	width:3.25rem;
+	height:.45rem;
+	border:none;
+	outline:none;
+	border-radius:.07rem;
+	background:#ca1d7b;
+	margin-top:2.3rem;
+	margin-left:.25rem;
+	text-align:center;
+	line-height:.45rem;
+	font-size:.16rem;
+	color:#fff;
+	font-family:"微软雅黑";
+}

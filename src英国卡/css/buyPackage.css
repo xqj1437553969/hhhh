@@ -1,0 +1,166 @@
+.container{
+	min-height:100%;
+	background: url(../images/back.jpg) no-repeat 0 0;
+	background-size:100% 100%;
+	display:none;
+	font-size:.16rem;
+}
+#card-img {
+    padding-top: .12rem;
+    text-align: center;
+}
+#card-img>img {
+	width:100%;
+    height:1.48rem;
+}
+#write-tip,.select-package{
+	line-height:.3rem;
+    padding-left:.28rem;
+	font-size:.15rem;
+	color:#fff;
+}
+#give-tip{
+	margin-top:.1rem;
+    padding-left:.28rem;
+	font-size:.15rem;
+	font-weight:600;
+	color:#fff;	
+}
+
+.select-package{
+	padding-left:0;
+	line-height:.46rem;
+}
+.form{
+	padding:.1rem .28rem;
+	padding-right:.15rem;
+	margin-top:.05rem;
+	line-height:.25rem;
+	background:#fff;
+	font-size:.15rem;
+	display:flex;
+	display:-webkit-flex;
+	flex-direction: row;
+	-webkit-flex-direction:row ;
+	border:1px solid transparent;
+	opacity:0.9;
+}
+.label{
+	display:block;
+    width:1.05rem;
+}
+.cell-input{
+	flex:1;
+}
+.cell-input>input{
+	width:100%;
+	line-height:.27rem;
+	font-size:.15rem;
+	background:transparent;
+}
+.code-form{	
+	display:flex;
+	margin-top:.05rem;
+	border:1px solid transparent;
+}
+.code-form>div{
+	margin-top:0;
+}
+#get-code{
+	display:block;
+	width:1.2rem;
+	opacity:0.9;
+	border:none;
+	border-left:1px solid #333;
+	background-color:#fff;
+    text-align:center;
+    font-size:.14rem;
+}
+.package-wrapper{
+	padding-left:.28rem;
+	padding-right:.28rem;
+	color:#fff;
+}
+#list,.select-recharge-list{
+	display:-webkit-flex;
+	display:flex;
+	flex-wrap:wrap;
+	justify-content:space-between;
+}
+#list>li{
+	width:45%;
+}
+.select-recharge-list>li{
+	width:45%;
+}
+#list>li,.select-recharge-list>li{
+    text-align:center;
+    line-height:.46rem;
+    background:#ca1d7b;
+    border-radius:.07rem;
+    color:#fff;
+    font-size:.15rem;
+}
+#list>li,.select-recharge-list>li{
+  margin-bottom:.23rem;
+}
+
+.select-recharge-title{
+  margin-top:.2rem;
+}
+.select-recharge-list{
+	margin-top:.13rem;
+}
+.buy-info{
+	text-align:right;
+}
+.buy-total{
+	padding-right:.27rem;
+}
+.buy-rmb{
+	padding-top:.13rem;
+}
+#btn-pay{
+	display:block;
+	width:3.26rem;
+	margin-top:1.45rem;
+	margin-left:.245rem;
+	line-height:.45rem;
+	text-align:center;
+	background:#ca1d7b;
+	border:none;
+	border-radius:.07rem;
+	color:#fff;
+	font-size:.15rem;
+	font-family:"微软雅黑";
+}
+#list>li.checked{
+	background:#7d0245;
+}
+.select-recharge-list>li.checked{
+	background:#7d0245;
+}
+.package-detail{
+	margin-top:.2rem;
+	padding-bottom:.1rem;
+	padding-top:.1rem;
+	background:#ca1d7b;
+	border-radius:.07rem;
+	font-size:.15rem;
+	text-align:center;
+}
+strong{
+  font-size:.17rem;
+}
+#date{
+	width: 100%;
+    line-height: .27rem;
+    font-size: .15rem;
+    color:#999;
+    font-family:Arial;
+}
+/*消息通知层*/
+#know{
+   color:#353535;
+   font-size:0.15rem;
+}

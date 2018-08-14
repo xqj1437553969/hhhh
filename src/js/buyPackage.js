@@ -23,19 +23,24 @@ function getQueryString(str) {
 	return null;
 }
 var code = getQueryString("code");
-var packageId = null;
-var productId = null;
-var orderSymbol = null;//货币符号
-var excRate = null;//汇率
+var businessdata = {
+	cardId:null,
+	currencySymbol:null,
+	exchangeRate:null,
+	operatorId:null,
+	packageList:null,
+	activateDateEarliest:null,
+	activateDatePrompt:null,
+	packageId:null,
+	productId:null,
+	priceId:null,
+}
 var openId = null;
 var nickname = null;
 var headurl = null;
-var cardId = null;
-var activateDateEarliest = null;
-var activateDatePrompt = null;
+var operatorList = null;
 var codeTrue = false;
 var hascap = false;
-var mut = null;
 buyPackage();
 function buyPackage(){
 	  $.ajax({
@@ -60,20 +65,10 @@ function dealResult(r){
 		   sessionStorage.setItem("nickname",nickname);
 		   sessionStorage.setItem("headurl",headurl);
 		   sendCount(openId);
-		   var operatorList = r.data.operatorList;
-		   var index = null;
+		   operatorList = r.data.operatorList;
 		   var imgDivs = '';
-		   for(var j=0;j<operatorList.length;j++){
-		    	if(operatorList[j].countryName=="英国"&&operatorList[j].operatorName.indexOf("gaff")!=-1){
-		    		index = j;
-		    		imgDivs += '<div class="swiper-slide"><img src="'+operatorList[j].activateImgUrl+'"></div>'
-//		    		break;
-		    	}
-		    	if(operatorList[j].countryName=="美国"&&operatorList[j].operatorName.indexOf("bile")!=-1){
-		    		imgDivs += '<div class="swiper-slide"><img src="'+operatorList[j].activateImgUrl+'"></div>'
-		    		index = j;
-//		    		break;
-		    	}
+		   for(var i=0;i<operatorList.length;i++){
+               imgDivs += '<div class="swiper-slide"><img src="'+operatorList[i].activateImgUrl+'"></div>'
 		   }
 		   $(".swiper-wrapper").html(imgDivs);
 		   var mySwiper = new Swiper('.swiper-container', {
@@ -93,11 +88,6 @@ function dealResult(r){
 		   mySwiper.el.onclick = function(){
   			  mySwiper.autoplay.stop();
 		   }
-		   var uk = operatorList[index];
-		   var activateImgUrl = uk.activateImgUrl;
-//		   $("#card-img").html(`<img src='${activateImgUrl}'/>`)
-		   activateDateEarliest = uk.activateDateEarliest;
-		   activateDatePrompt = uk.activateDatePrompt;
 		   $(".container").show();
 		   $("#activate-code").val("");
 		   if(r.data.phone){
@@ -134,6 +124,7 @@ $("#activate-code").blur(function(){//验证激活码
 	checkCardNo(activateCode);
 })
 function checkCardNo(activateCode){//验证激活码
+	clearPackage();
 	$(".form").css("borderColor","transparent");
 	$("#code-form").css("borderColor","transparent");
 	if(!activateCode){
@@ -163,12 +154,16 @@ function checkCardNo(activateCode){//验证激活码
             $("#loadingToast").hide();
             $(".weui-toast__content").html("数据加载中");
 			if(r.success){
-			  cardId = r.data.cardId;
-			  mut = r.data.cardId;
 			  $("#activate-code").parent().parent().css({"borderColor":"transparent"});
 			  $("#write-tip").html("资料填写");
 			  $("#write-tip").css("color","#fff");
-			  if(mut===723){			  	
+			  businessdata.cardId = r.data.cardId;
+			  businessdata.currencySymbol = r.data.currencySymbol;
+			  businessdata.exchangeRate = r.data.exchangeRate;
+			  businessdata.operatorId = r.data.operatorId;
+			  businessdata.packageList = r.data.packageList;
+			  if(businessdata.packageList[0].chargeType===0){
+			  	  $("#give-tip").text("开卡成功即可赠送5磅话费");
 				  var txt = `<div class="package-wrapper">	    		
 			    		<div class="select-package">请选择套餐</div>
 			    		<ul id="list"></ul>
@@ -183,40 +178,36 @@ function checkCardNo(activateCode){//验证激活码
 					</div>`
 				  $(".package-container").html(txt);
 				  $(".package-detail").css({"text-align":"center","padding-left":"0"});
-			  }else{
+			  }else if(businessdata.packageList[0].chargeType===1){
+			  	 $("#give-tip").text("");
 			  	 var txt = `<div class="package-wrapper">	    		
 			    		<div class="select-package">请选择套餐</div>
 			    		<ul id="list">
 			    		</ul>
 			    		<div class="package-detail-title">套餐详情</div>
 			    		<div class="package-detail"></div>
-			    		<div class="select-month-title">请选择订购月数</div>
+			    		<div class="select-month-title">请选择订购月数(1个月=30天)</div>
 			    		<div class="select-month">
 							<select id="order-month">
-	                             <option value="1">1个月</option>
-	                             <option value="2">2个月</option>
-	                             <option value="3">3个月</option>
 		                    </select>
 						</div>
-						<div class="buy-info" style="margin-top:.2rem;">
-							<p class="buy-total">总计：$40.0*3 = $147.0</p>
-							<p class="buy-rmb">$147.0=1029.0CNY</p>
-							<p class="buy-rate">汇率按照：$1.0=7.00CNY</p>
+						<div class="buy-info" style="margin-top:.2rem;text-align:left;padding-left:1.3rem;">
+							<p class="buy-total"></p>
+							<p class="buy-rmb"></p>
+							<p class="buy-rate"></p>
 						</div>
 					</div>`
 			  	    $(".package-container").html(txt);
 			  	    $(".package-detail").css({"text-align":"left","padding-left":".7rem"});
 			  }
-			  putData(r.data.packageList);
-			  orderSymbol = r.data.currencySymbol;//货币符号
-			  excRate = r.data.exchangeRate;//汇率
+			  putData(businessdata.packageList);
+			  findOperatorId(operatorList,businessdata.operatorId);
 			  $("#btn-pay").css("marginTop","0.25rem");
 			  $(".container").append("<div id='box'></div>");
 			  $("#box").css("height","0.6rem");
-			  $("#date").html('请选择激活日期（'+activateDatePrompt+'）')
+			  $("#date").html('请选择激活日期（'+businessdata.activateDatePrompt+'）')
 			  codeTrue = true;
 			}else{
-			  codeTrue = false;
 			  var desc = r.desc;
 			  if(desc.indexOf("无效")!=-1){
 			  	 desc = "无效的激活码";
@@ -224,26 +215,43 @@ function checkCardNo(activateCode){//验证激活码
 			  $("#write-tip").html(desc);
 			  $("#write-tip").css("color","red");
 			  $("#activate-code").parent().parent().css({"borderColor":"red"});
-			  clearPackage()
+			  clearPackage();
 			}
 		}
 	});
 }
+function findOperatorId(_operatorList,_operatorId){
+	for(var i=0;i<_operatorList.length;i++){
+		if(_operatorId===_operatorList[i].operatorId){
+			businessdata.activateDateEarliest = _operatorList[i].activateDateEarliest;
+			businessdata.activateDatePrompt = _operatorList[i].activateDatePrompt;
+			break;
+		}
+	}
+}
 function clearPackage(){
-  orderSymbol = null;
-  excRate = null;
-  packageId = null;
-  productId = null;
   codeTrue = false;
+  businessdata.cardId = null;
+  businessdata.currencySymbol = null;
+  businessdata.exchangeRate = null;
+  businessdata.operatorId = null;
+  businessdata.packageList = null;
+  businessdata.activateDateEarliest = null;
+  businessdata.activateDatePrompt = null;
+  businessdata.packageId = null;
+  businessdata.productId = null;
+  businessdata.priceId = null;
   $(".package-container").html("");
   $("#btn-pay").css("marginTop","1.45rem");
   $("#box").remove();
   $("#code-form").css("borderColor","transparent");
-  $("#date").html('请选择激活日期')
+  $("#date").html('请选择激活日期');
+  $("#date").css("color","#999");
 }
 function putData(packageList){
-	packageId = null;
-	productId = null;
+	businessdata.packageId = null;
+	businessdata.productId = null;
+	businessdata.priceId = null;
 	var packageList = packageList;
 	var length = packageList.length;
 	var str = "";
@@ -253,42 +261,70 @@ function putData(packageList){
 	}
 	$("#list").html(str);
 	$("#list>li").eq(0).addClass("checked");
-	if(mut===723){		
+	businessdata.packageId = Number($("#list>li").eq(0).attr("data-id"));
+	if(businessdata.packageList[0].chargeType===0){		
 		var one = packageList[0].packageDesc.replace(/<[^>]*>/g,"，");
 		$(".package-detail").html(one);
-	}else{
+		getProductList(packageList,0);
+	}else if(businessdata.packageList[0].chargeType===1){
 		var one = packageList[0].packageDesc;
 		$(".package-detail").html(one);
+		getPriceList(packageList,0)
+	}else{
+		
 	}
-	packageId = Number($("#list>li").eq(0).attr("data-id"));
-	getProductList(packageList,0);
 	$("#list>li").click(function(){
 		$(".buy-total").html("");
-		productId = null;
+		$(".buy-rmb").html("");
+		$(".buy-rate").html("");
+		businessdata.productId = null;
+		businessdata.priceId = null;
 		if($(this).hasClass("checked")){
 			return;
 		}
 		$(this).addClass("checked").siblings().removeClass("checked");
         var index = $(this).index();
-        if(mut===723){        	
+        if(businessdata.packageList[0].chargeType===0){        	
         	var two = packageList[index].packageDesc.replace(/<[^>]*>/g,"，");
         	$(".package-detail").html(two);
-        }else{
+        	businessdata.packageId = Number($(this).attr("data-id"));
+        	getProductList(packageList,index);
+        }else if(businessdata.packageList[0].chargeType===1){
         	var two = packageList[index].packageDesc;
         	$(".package-detail").html(two);
+        	businessdata.packageId = Number($(this).attr("data-id"));
+        	getPriceList(packageList,index);
+        }else{
+        	
         }
-		packageId = Number($(this).attr("data-id"));
-		getProductList(packageList,index);
     })
 }
+function getPriceList(packageList,index){
+	 var priceList = packageList[index].priceList;
+	 var str = '<option value="0">请选择套餐月数</option>';
+     for(var i=0;i<priceList.length;i++){
+     	  var _monthNo = priceList[i].monthNo;
+		  var _priceId = priceList[i].priceId;
+		  var _price   = priceList[i].price;
+       	  str+='<option value="'+_monthNo+'" data-price="'+_price+'" data-priceid="'+_priceId+'">'+_monthNo+'个月（共节省'+businessdata.currencySymbol+(_monthNo*(priceList[0].price-_price)).toFixed(1)+'）</option>'
+     }
+     $("#order-month").html(str);
+     moneyCount();
+     $("#order-month").change(function(){
+     	 $(".buy-total").html("");
+		 $(".buy-rmb").html("");
+		 $(".buy-rate").html("");
+    	 moneyCount();
+	 })
+}
 function getProductList(packageList,index){
-       var productLists = packageList[index].productList;
+       var productList = packageList[index].productList;
        var str = '';
-       for(var i=0;i<productLists.length;i++){
-       	  var productName = productLists[i].productName;
-		  var _productId = productLists[i].productId;
-		  var productPrice =productLists[i].productPrice;
-       	  str+='<li  data-productprice="'+productPrice+'" data-productid="'+_productId+'">'+productName+'</li>'
+       for(var i=0;i<productList.length;i++){
+       	  var _productName = productList[i].productName;
+		  var _productId = productList[i].productId;
+		  var _productPrice = productList[i].productPrice;
+       	  str+='<li  data-productprice="'+_productPrice+'" data-productid="'+_productId+'">'+_productName+'</li>'
        }
        $(".select-recharge-list").html(str);//插入产品列表
 	   $(".select-recharge-list>li").click(function(){
@@ -298,12 +334,29 @@ function getProductList(packageList,index){
 }
 
 function moneyCount(){
-	 var ele = $(".select-recharge-list>li[class='checked']");
-	 var _productprice = ele.attr("data-productprice");
-	 productId = ele.attr("data-productid");
-	 var symt = orderSymbol +_productprice;
-	 var rmb = _productprice*excRate;
-    $(".buy-total").html('总计:'+symt+'=<strong>'+rmb.toFixed(2)+'CNY</strong>');
+	 if(businessdata.packageList[0].chargeType===0){	 	
+			 var ele = $(".select-recharge-list>li[class='checked']");
+			 var _productprice = ele.attr("data-productprice");
+			 businessdata.productId = ele.attr("data-productid");
+			 var symt = businessdata.currencySymbol +_productprice;
+			 var rmb = _productprice*businessdata.exchangeRate;
+		     $(".buy-total").html('总计:'+symt+'=<strong>'+rmb.toFixed(2)+'CNY</strong>');
+	 }else if(businessdata.packageList[0].chargeType===1){
+	 	    var val = $("select").val();
+	 	    if(val!=0){	 	    	
+		 	    var month = Number(val);
+		 	    var preprice = Number($("option[value='"+val+"']").attr("data-price"));
+		 	    businessdata.priceId = $("option[value='"+val+"']").attr("data-priceid");
+				var totalPrice = month*preprice;
+				var rmb = totalPrice*businessdata.exchangeRate;
+				var symt= businessdata.currencySymbol+totalPrice.toFixed(2);//货币符号+总价
+			    $(".buy-total").html('总计：'+businessdata.currencySymbol+preprice+'*'+month+'=<strong>'+symt+'</strong>');
+			    $(".buy-rmb").html(symt+'=<strong>'+rmb.toFixed(2)+'CNY</strong>');
+			    $(".buy-rate").html("汇率："+businessdata.currencySymbol+"1.00="+businessdata.exchangeRate.toFixed(2)+"CNY");
+	 	    }
+	 }else{
+	 	
+	 }
 }
 
 $("#phone").blur(function(){//验证手机号
@@ -394,7 +447,8 @@ $(".code-container").on("click","#get-code",function(){//验证码发送
     	success:function(r){
     		if(r.success){
 				timer = setInterval(function(){
-					$(that).html("已发送<span>"+count+"s</span>");
+				    $(that).attr("disabled", "true"); 
+					count--;
 					if(count==0){
 					   $(that).removeAttr("disabled"); 
 					   clearInterval(timer);
@@ -402,8 +456,7 @@ $(".code-container").on("click","#get-code",function(){//验证码发送
 					   $(that).html("请重新获取")
 					   return;
 					}
-					$(that).attr("disabled", "true"); 
-					count--
+					$(that).html("已发送<span>"+count+"s</span>");			
 				},1000)
     		}else{
     		   $("#write-tip").css("color","red");
@@ -418,7 +471,7 @@ $(".code-container").on("click","#get-code",function(){//验证码发送
 
 $("#date-warpper").click(function(){//激活日期选择
     if(codeTrue){
-    	var firstDay = getDate(activateDateEarliest);
+    	var firstDay = getDate(businessdata.activateDateEarliest);
     	weui.datePicker({
     		start : firstDay, // 从今天开始
     		end : 2030,
@@ -430,6 +483,10 @@ $("#date-warpper").click(function(){//激活日期选择
     		},
     		id : 'datePicker'
     	});
+    }else{
+    	  $("#write-tip").html("激活码验证通过才可进行日期选择");
+		  $("#write-tip").css("color","red");
+		  $("body").scrollTop(0);
     }
 })
 
@@ -511,40 +568,79 @@ $("#btn-pay").click(function(){//创建订单
 		$("body").scrollTop(0);
 		return;
 	}
-	if(!productId){
-	    $("#write-tip").html("请选择充值金额");
-		$("#write-tip").css("color","red");
-		$("body").scrollTop(0);
-		return;
-	}
-	if(!hascap){
-		productId = Number(productId);
-		var data = {
-			openId:openId,
-			nickname:nickname,
-			headurl:headurl,
-			productId:productId,
-			packageId:packageId,
-			cardId:cardId,
-			activateDate:activateDate,
-			phone:"86"+phone,
-			orderSource:0
+	
+	if(businessdata.packageList[0].chargeType===0){
+		if(!businessdata.productId){
+		    $("#write-tip").html("请选择充值金额");
+			$("#write-tip").css("color","red");
+			$("body").scrollTop(0);
+			return;
 		}
+		if(!hascap){
+			var data = {
+					openId:openId,
+					nickname:nickname,
+					headurl:headurl,
+					productId:businessdata.productId,
+					packageId:businessdata.packageId,
+					cardId:businessdata.cardId,
+					activateDate:activateDate,
+					phone:"86"+phone,
+					orderSource:0
+				}
+			}else{
+				var captcha = $("#code").val();
+				var data = {
+					openId:openId,
+					nickname:nickname,
+					headurl:headurl,
+					productId:businessdata.productId,
+					packageId:businessdata.packageId,
+					cardId:businessdata.cardId,
+					activateDate:activateDate,
+					phone:"86"+phone,
+					captcha:captcha,
+					orderSource:0
+				}
+			}
+	}else if(businessdata.packageList[0].chargeType===1){
+		if(!businessdata.priceId){
+		    $("#write-tip").html("请选择订购月数");
+			$("#write-tip").css("color","red");
+			$("body").scrollTop(0);
+			return;
+		}
+		if(!hascap){
+			var data = {
+					openId:openId,
+					nickname:nickname,
+					headurl:headurl,
+					packageId:businessdata.packageId,
+					priceId:businessdata.priceId,
+					cardId:businessdata.cardId,
+					activateDate:activateDate,
+					phone:"86"+phone,
+					orderSource:0
+				}
+			}else{
+				var captcha = $("#code").val();
+				var data = {
+					openId:openId,
+					nickname:nickname,
+					headurl:headurl,
+					packageId:businessdata.packageId,
+					priceId:businessdata.priceId,
+					cardId:businessdata.cardId,
+					activateDate:activateDate,
+					phone:"86"+phone,
+					captcha:captcha,
+					orderSource:0
+				}
+			}
 	}else{
-		var captcha = $("#code").val();
-		var data = {
-			openId:openId,
-			nickname:nickname,
-			headurl:headurl,
-			productId:productId,
-			packageId:packageId,
-			cardId:cardId,
-			activateDate:activateDate,
-			phone:"86"+phone,
-			captcha:captcha,
-			orderSource:0
-		}
+		
 	}
+	
   if(canPay){
   	  canPay = false;
 	  $("#loadingToast").fadeIn(100);

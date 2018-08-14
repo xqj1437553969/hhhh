@@ -1,3 +1,6 @@
+.weui-picker__action{
+   color: #ca1d7b;
+}
 .container{
 	min-height:100%;
 	background: url(../images/back.jpg) no-repeat 0 0;
@@ -152,13 +155,13 @@
 	text-align:right;
 }
 .buy-total{
-	padding-right:.15rem;
+	padding-right:0rem;
 }
 .buy-rmb{
-	padding-right:.47rem;
+	padding-right:0rem;
 }
 .buy-rate{
-	padding-right:.04rem;
+	padding-right:0rem;
 }
 strong{
   font-size:.17rem;
@@ -208,7 +211,7 @@ strong{
 	background-color:transparent;;
 	position:relative;
 	z-index:1;
-	text-indent:38%;         
+	text-indent:30%;         
 }
 .select-month:before{
 	content:"";

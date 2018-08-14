@@ -1,0 +1,179 @@
+.container{
+	min-height:100%;
+	background: url(../images/back.jpg) no-repeat 0 0;
+	background-size:100% 100%;
+	display:none;
+	font-size:.16rem;
+}
+
+.card-img>img{
+	display:block;
+	width:100%;
+	height:1.7rem;
+}
+.write-tip{
+	line-height:.46rem;
+	font-size:.15rem;
+	color:#fff;
+	padding-left:.24rem;
+}
+.form{
+	padding:.075rem .23rem;
+	background:#fff;
+	font-size:.15rem;
+	display:flex;
+	display:-webkit-flex;
+	flex-direction: row;
+	-webkit-flex-direction:row ;
+	border:1px solid transparent;
+	opacity:0.9;
+}
+.label{
+	display:block;
+    width:1.05rem;
+}
+.cell-input{
+	flex:1;
+	-webkit-flex:1;
+}
+.cell-input>input{
+	width:100%;
+	line-height:.27rem;
+	font-size:.15rem;
+}
+.package-wrapper,.change-wrapper,.product-wrapper,.recharge-type{
+	padding-top:.17rem;
+	padding-left:.25rem;
+	padding-right:.25rem;
+	color:#fff;
+}
+.recharge-type,.package-wrapper,.product-wrapper{
+	padding-top:0;
+}
+.package-wrapper{
+	display:none;
+}
+.recharge-type{
+	padding-bottom:.17rem;
+}
+.change-wrapper,.btns{
+	display:flex;
+	display:-webkit-flex;
+	justify-content:space-between;
+	-webkit-justify-content:space-between;
+}
+.change-wrapper>span{
+	line-height:.44rem;
+}
+#package-name{
+	padding-right:1.1rem;
+}
+.type-tip{
+	padding-bottom:.17rem;
+}
+.desc-tip{
+	padding-top:.17rem;
+	display:none;
+}
+#original-btn,#only-btn,#change-btn{
+	width:1rem;
+	line-height:.44rem;
+	text-align:center;
+	border:none;
+	border-radius:.07rem;
+	color:#fff;
+	font-size:.15rem;
+	font-family:"微软雅黑";
+}
+.btns>button{
+	background:#ca1d7b;
+}
+.btns>button.checked{
+	background:#7d0245!important;
+}
+.select-recharge-title{
+   font-size:.15rem;
+}
+#list,.select-recharge-list{
+	display:-webkit-flex;
+	display:flex;
+	flex-wrap:wrap;
+	justify-content:space-between;
+}
+#list,.select-recharge-list{
+	margin-top:.13rem;
+}
+#list>li,.select-recharge-list>li{
+	width:45%;
+}
+#list>li,.select-recharge-list>li{
+    text-align:center;
+    line-height:.46rem;
+    background:#ca1d7b;
+    border-radius:.07rem;
+    color:#fff;
+    font-size:.15rem;
+}
+#list>li,.select-recharge-list>li{
+  margin-bottom:.23rem;
+}
+#list,.select-recharge-list{
+	margin-top:.13rem;
+}
+#list>li.checked,.select-recharge-list>li.checked{
+	background:#7d0245;
+}
+.package-detail,.type-desc{
+	margin-top:.2rem;
+	padding-bottom:.1rem;
+	padding-top:.1rem;
+	background:#ca1d7b;
+	border-radius:.07rem;
+	font-size:.15rem;
+	text-align:center;
+}
+.type-desc{
+	display:none;
+}
+.buy-info{
+	text-align:right;
+}
+.buy-total{
+	font-size:.15rem;
+}
+.buy-rmb{
+	padding-top:.13rem;
+	font-size:.15rem;
+}strong{
+  font-size:.17rem;
+}
+#btn-pay{
+	display:block;
+	width:3.26rem;
+	margin-top:2.45rem;
+	margin-left:.245rem;
+	line-height:.44rem;
+	text-align:center;
+	background:#ca1d7b;
+	border:none;
+	border-radius:.07rem;
+	color:#fff;
+	font-size:.15rem;
+	font-family:"微软雅黑";
+}
+.empty-box{
+	margin-top:.2rem;
+	text-align: center;
+	color:#fff;
+	font-size:.12rem;
+}
+#prepaidRecord{
+	color:#ca1d7b;
+	margin-left:.1rem;
+}
+#prepaidRecord:active{
+	color:#a23872;
+}
+#end{
+	height:.1rem;
+}
